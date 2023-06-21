@@ -1,0 +1,59 @@
+Q-What is the purpose of multithreading in Python?
+The purpose of multithreading in Python is to enable concurrent execution of multiple threads within a single program. Multithreading allows different parts of a program to run simultaneously, improving performance and responsiveness in certain scenarios
+The module used to handle threads in Python is called the threading module
+
+Q-why threading module used
+Concurrent Execution: The threading module allows different parts of a program to run concurrently, enabling tasks to be executed simultaneously. This can improve the overall performance and responsiveness of the program
+Thread Creation: The threading module provides a high-level interface for creating and managing threads. It allows you to create new threads by subclassing the Thread class or creating instances of the Thread class directly.
+Thread Synchronization: The threading module offers synchronization primitives like locks, semaphores, conditions, and events. These mechanisms help coordinate access to shared resources, ensuring thread safety and preventing race conditions when multiple threads are accessing and modifying the same data
+
+activeCount():
+Use: The activeCount() function returns the number of currently active threads in the program.
+currentThread():
+Use: The currentThread() function returns the Thread object representing the current thread of execution.
+enumerate():
+Use: The enumerate() function returns a list of all currently active Thread objects.
+
+run():
+Use: The run() method is the entry point for the thread's execution. It contains the code that will be executed when the thread is started.
+start():
+Use: The start() method starts the execution of the thread. It creates a new system-level thread and invokes the thread's run() method.
+join():
+Use: The join() method blocks the calling thread until the thread on which it is called has completed its execution.
+isAlive():
+Use: The isAlive() method checks whether a thread is currently alive or active.
+
+4. rite a python program to create two threads. Thread one must print the list of squares and thread
+two must print the list of cubes
+import threading
+def squares():
+    for i in range (1,11):
+        square=i**2
+        print(f'square of {i}:{square}')
+  
+def cubes():
+    for j in range (1,11):
+        cube=j**3
+        print(f'cube of {j}:{cube}')
+thread1=threading.Thread(target=squares)
+thread2=threading.Thread(target=cubes)
+thread1.start()
+thread1.join()
+thread2.start()
+thread2.join()
+
+5. State advantages and disadvantages of multithreading
+Advantages of Multithreading:
+
+Increased Responsiveness 
+Improved Performance
+Resource Sharing
+Simplified Design
+Disadvantages of Multithreading:
+Complexity
+Increased Memory Consumption
+Difficult Debugging
+Scalability Limitations
+6. Explain deadlocks and race conditions.
+Deadlock is a situation in concurrent programming where two or more threads or processes are unable to proceed because each is waiting for the other to release a resource or take a specific action. In other words, it's a situation where multiple threads are stuck in a circular wait, preventing any of them from making progress
+A race condition occurs in concurrent programming when the behavior of a program depends on the relative timing or interleaving of multiple threads or processes. It arises when multiple threads access and manipulate shared data concurrently without proper synchronization.
